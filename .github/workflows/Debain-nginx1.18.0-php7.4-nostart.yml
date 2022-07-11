@@ -1,0 +1,40 @@
+name: Debain-nginx1.18.0-php7.4-nostart
+
+on:
+  workflow_dispatch:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@master
+      
+      - 
+        name: Set Up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      - 
+        name: Set Up Buildx
+        uses: docker/setup-buildx-action@v2
+        
+      - 
+        name: Login DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - 
+        name: Buildx
+        uses: docker/build-push-action@v3
+        with:
+          context: Debain-nginx1.18.0-php7.4-nostart
+          file: Debain-nginx1.18.0-php7.4-nostart/Dockerfile
+          platforms: |
+            linux/amd64
+            linux/arm64
+          push: true
+          tags: |
+            ddsderek/foundations:Debain-nginx1.18.0-php7.4-nostart
