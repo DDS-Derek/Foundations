@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  web:
+    container_name: yourwebname #记得改
+    image: ddsderek/foundations:Debian-apache2-php7.1 #选择你需要的镜像
+#    image: ddsderek/foundations:Debian-apache2-php7.3
+    restart: always
+    ports:
+      - '80:80' #记得改
+    volumes:
+      - ./web:/var/www/html
+      - ./000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+      - ./apache2.conf:/etc/apache2/apache2.conf
+  db:
+    container_name: yourwebdbname #记得改
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: name #记得改
+      MYSQL_USER: user #记得改
+      MYSQL_PASSWORD: password #记得改
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - ./db:/var/lib/mysql
