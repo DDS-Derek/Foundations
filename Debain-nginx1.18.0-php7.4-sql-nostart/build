@@ -1,0 +1,1 @@
+docker buildx build -t ddsderek/foundations:Debain-nginx1.18.0-php7.4-nostart --platform=linux/amd64,linux/arm64 . --push
