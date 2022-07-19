@@ -39,7 +39,6 @@ jobs:
             linux/arm/v7
             linux/arm64/v8
             linux/ppc64le
-            linux/s390x
           push: true
           tags: |
             ddsderek/foundations:Debian-apache2-php7.3
