@@ -1,4 +1,4 @@
-name: Debain-nginx1.18.0-php7.4-nostart
+name: Debian-apache2-php7.1
 
 on:
   workflow_dispatch:
@@ -30,13 +30,16 @@ jobs:
         name: Buildx
         uses: docker/build-push-action@v3
         with:
-          context: Debain-nginx1.18.0-php7.4-nostart
-          file: Debain-nginx1.18.0-php7.4-nostart/Dockerfile
+          context: Debian-apache2-php7.1
+          file: Debian-apache2-php7.1/Dockerfile
           platforms: |
+            linux/386
             linux/amd64
             linux/arm/v6
             linux/arm/v7
             linux/arm64/v8
+            linux/ppc64le
+            linux/s390x
           push: true
           tags: |
-            ddsderek/foundations:Debain-nginx1.18.0-php7.4-nostart
+            ddsderek/foundations:Debian-apache2-php7.1
