@@ -33,7 +33,7 @@ jobs:
           context: Debain-nginx1.18.0-php7.4-nostart
           file: Debain-nginx1.18.0-php7.4-nostart/Dockerfile
           platforms: |
-            linux/386
+            linux/ppc64le
 
           push: true
           tags: |
