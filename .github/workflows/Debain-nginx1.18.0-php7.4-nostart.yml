@@ -33,10 +33,11 @@ jobs:
           context: Debain-nginx1.18.0-php7.4-nostart
           file: Debain-nginx1.18.0-php7.4-nostart/Dockerfile
           platforms: |
-            linux/amd64
-            linux/arm/v6
-            linux/arm/v7
-            linux/arm64/v8
+#            linux/amd64
+#            linux/arm/v6
+#            linux/arm/v7
+#            linux/arm64/v8
+            linux/s390x
           push: true
           tags: |
             ddsderek/foundations:Debain-nginx1.18.0-php7.4-nostart
