@@ -1,4 +1,4 @@
-FROM ddsderek/ubuntu:18.04 AS build-env
+FROM ubuntu:18.04 AS build-env
 
 ENV NGINX_VERSION 1.16.1
 ENV PHP_VERSION 7.2.21
@@ -111,7 +111,7 @@ RUN rm -rf /usr/local/php/include
 RUN wget -c -O composer https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar
 
 
-FROM ddsderek/ubuntu:18.04
+FROM ddsderek/foundations:Ubuntu18.04
 COPY --from=build-env /usr/local/nginx /usr/local/nginx
 COPY --from=build-env /usr/local/php /usr/local/php
 COPY --from=build-env /usr/local/src/composer /usr/local/bin/composer
@@ -189,11 +189,14 @@ RUN useradd -m -s /sbin/nologin www && \
 ADD conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 ADD conf/default_server.conf /etc/nginx/conf.d/default_server.conf
 ADD conf/php.ini /usr/local/php/etc/php.ini
+ADD ./shell /shell
 
 RUN chmod +x /usr/local/bin/composer
 # 有了apt-get install 后，从68 MB => 87 MB
-RUN apt-get update && apt-get install -y tzdata vim cron ca-certificates && apt-get clean && ln -sf /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
+RUN apt-get update && apt-get install -y cron ca-certificates && apt-get clean && chmod -R 755 /shell
 
 WORKDIR /app/web
 
 EXPOSE 80
+
+CMD [ "/shell/000-start.sh" ]
