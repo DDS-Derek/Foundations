@@ -217,5 +217,3 @@ RUN apt-get update && apt-get install -y ca-certificates && apt-get clean && rm 
 WORKDIR /app/web
 
 EXPOSE 80
-
-CMD [ "/shell/000-start.sh" ]
