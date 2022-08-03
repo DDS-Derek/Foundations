@@ -198,5 +198,3 @@ RUN apt-get update && apt-get install -y cron ca-certificates && apt-get clean &
 WORKDIR /app/web
 
 EXPOSE 80
-
-CMD [ "/shell/000-start.sh" ]
