@@ -34,7 +34,6 @@ jobs:
           file: Ubuntu20.04-nginx1.16.1-php7.4.20/Dockerfile
           platforms: |
             linux/amd64
-            linux/arm64/v8
           push: true
           tags: |
             ddsderek/foundations:Ubuntu20.04-nginx1.16.1-php7.4.20
