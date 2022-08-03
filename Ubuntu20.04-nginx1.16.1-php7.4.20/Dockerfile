@@ -1,4 +1,4 @@
-FROM ddsderek/ubuntu:20.04 AS build-env
+FROM ubuntu:20.04 AS build-env
 
 #http://nginx.org/en/download.html
 ENV NGINX_VERSION 1.16.1
@@ -125,7 +125,7 @@ RUN sed -i 's/^;date\.timezone[ ]*=[ ]*/date\.timezone = Asia\/Shanghai/' /usr/l
 RUN rm -rf /usr/local/php/include
 
 
-FROM ubuntu:20.04
+FROM ddsderek/foundations:Ubuntu20.04
 COPY --from=build-env /usr/local/nginx /usr/local/nginx
 COPY --from=build-env /usr/local/php /usr/local/php
 
@@ -191,8 +191,8 @@ COPY --from=build-env   \
 #overwrite nginx.conf
 ADD conf/nginx.conf /usr/local/nginx/conf/nginx.conf
 ADD conf/default_server.conf /etc/nginx/conf.d/default_server.conf
-ADD start.sh /start.sh
 ADD conf/php.ini /usr/local/php/etc/php.ini
+ADD ./shell /shell
 
 # /var/lib/apt/lists is huge
 RUN useradd -m -s /sbin/nologin www && \
@@ -205,14 +205,12 @@ RUN useradd -m -s /sbin/nologin www && \
     ln  -s  /usr/local/php/bin/pear    /usr/local/bin/pear && \
     ln  -s  /usr/local/php/bin/php-config    /usr/local/bin/php-config && \
     ln  -s  /usr/local/nginx/sbin/nginx    /usr/local/sbin/nginx && \
-    chmod 755 /start.sh
+    chmod -R 755 /shell
 
 RUN apt-get update && apt-get install -y ca-certificates && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app/web
 
-#Set port
 EXPOSE 80
 
-#Start it
-ENTRYPOINT ["/start.sh"]
+CMD [ "/shell/000-start.sh" ]
