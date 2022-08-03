@@ -34,8 +34,6 @@ jobs:
           file: Ubuntu18.04-nginx1.16.1-php7.2.21/Dockerfile
           platforms: |
             linux/amd64
-            linux/arm/v7
-            linux/arm64/v8
           push: true
           tags: |
             ddsderek/foundations:Ubuntu18.04-nginx1.16.1-php7.2.21
