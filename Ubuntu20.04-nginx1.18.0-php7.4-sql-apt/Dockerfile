@@ -32,7 +32,6 @@ RUN  apt update -y &&\
      ln -sf /dev/stdout /var/log/nginx/access.log  && \
      ln -sf /dev/stderr /var/log/nginx/error.log   && \
      echo "<?php phpinfo(); ?>"  > /var/www/html/index.php && \
-     apt remove -y wget && \
      apt clean && \
      rm -rf /var/lib/apt/lists/*   /var/cache/apt && \
      useradd -m -s /sbin/nologin www && \
