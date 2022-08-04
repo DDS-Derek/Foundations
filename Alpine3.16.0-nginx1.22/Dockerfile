@@ -1,4 +1,7 @@
-FROM alpine:3.16.0
+FROM ddsderek/foundations:Alpine3.16.0
+
+ENV PUID=1000
+ENV PGID=1000
 
 RUN apk add --no-cache nginx
 

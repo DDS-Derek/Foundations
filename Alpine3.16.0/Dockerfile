@@ -5,7 +5,8 @@ ENV TZ=Asia/Shanghai
 ADD ./shell /shell
 
 RUN apk update && \
-    apk add --no-cache zip wget tzdata && \
+    echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories && \
+    apk add --no-cache zip wget tzdata shadow && \
     rm -rf /var/cache/apk/* && \
     rm -rf /root/.cache && \
     rm -rf /tmp/* && \

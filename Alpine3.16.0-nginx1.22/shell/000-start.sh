@@ -6,6 +6,8 @@ if [ ! -f "/tz.lock" ]; then
  sh /shell/010-tz.sh
 fi
 
+sh /shell/011-adduser.sh
+
 # 启动nginx
 echo -e "\033[34mNginx启动 \033[0m"
 nginx -g "daemon off;"
