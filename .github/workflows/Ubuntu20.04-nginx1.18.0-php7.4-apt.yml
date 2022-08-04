@@ -1,4 +1,4 @@
-name: Debain-nginx1.18.0-php7.4
+name: Ubuntu20.04-nginx1.18.0-php7.4-apt
 
 on:
   workflow_dispatch:
@@ -30,8 +30,8 @@ jobs:
         name: Buildx
         uses: docker/build-push-action@v3
         with:
-          context: Debain-nginx1.18.0-php7.4
-          file: Debain-nginx1.18.0-php7.4/Dockerfile
+          context: Ubuntu20.04-nginx1.18.0-php7.4-apt
+          file: Ubuntu20.04-nginx1.18.0-php7.4-apt/Dockerfile
           platforms: |
             linux/386
             linux/amd64
@@ -42,4 +42,4 @@ jobs:
             linux/s390x
           push: true
           tags: |
-            ddsderek/foundations:Debain-nginx1.18.0-php7.4
+            ddsderek/foundations:Ubuntu20.04-nginx1.18.0-php7.4-apt
