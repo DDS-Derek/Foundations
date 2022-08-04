@@ -1,4 +1,8 @@
-FROM debian:stable-slim
+FROM ddsderek/foundations:Debian
+
+ENV PUID=1000
+ENV PGID=1000
+
 RUN  apt update -y && \
      apt install -y --no-install-recommends --no-install-suggests nginx supervisor wget \
      php7.4 \
@@ -37,6 +41,7 @@ ADD ./conf/default /etc/nginx/sites-enabled/default
 ADD ./conf/nginx.conf /etc/nginx/nginx.conf
 ADD ./conf/size.ini /etc/php/7.4/fpm/conf.d/size.ini
 ADD ./conf/supervisord.conf /etc/supervisord.conf
+ADD ./shell /shell
 
 EXPOSE 80/tcp
 
