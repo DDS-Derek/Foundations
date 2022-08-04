@@ -33,9 +33,7 @@ jobs:
           context: Ubuntu20.04-nginx1.18.0-php7.4-sql-apt
           file: Ubuntu20.04-nginx1.18.0-php7.4-sql-apt/Dockerfile
           platforms: |
-            linux/386
             linux/amd64
-            linux/arm/v6
             linux/arm/v7
             linux/arm64/v8
             linux/ppc64le
