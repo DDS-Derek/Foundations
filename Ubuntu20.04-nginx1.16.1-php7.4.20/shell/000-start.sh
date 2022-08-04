@@ -7,7 +7,7 @@ if [ ! -f "/tz.lock" ]; then
 fi
 
 # 设置PUID PGID
-echo "\033[34m设置PUID PGID... \033[0m"
+echo -e "\033[34m设置PUID PGID... \033[0m"
 sh /shell/011-adduser.sh
 
 /usr/local/php/sbin/php-fpm
