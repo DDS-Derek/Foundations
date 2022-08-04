@@ -1,4 +1,4 @@
-name: Debain-nginx1.18.0-php7.4-nostart
+name: Debain-nginx1.18.0-php7.4-sql
 
 on:
   workflow_dispatch:
@@ -30,8 +30,8 @@ jobs:
         name: Buildx
         uses: docker/build-push-action@v3
         with:
-          context: Debain-nginx1.18.0-php7.4-nostart
-          file: Debain-nginx1.18.0-php7.4-nostart/Dockerfile
+          context: Debain-nginx1.18.0-php7.4-sql
+          file: Debain-nginx1.18.0-php7.4-sql/Dockerfile
           platforms: |
             linux/386
             linux/amd64
@@ -42,4 +42,4 @@ jobs:
             linux/s390x
           push: true
           tags: |
-            ddsderek/foundations:Debain-nginx1.18.0-php7.4-nostart
+            ddsderek/foundations:Debain-nginx1.18.0-php7.4-sql
