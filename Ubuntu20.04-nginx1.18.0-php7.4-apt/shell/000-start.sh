@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # 设置时区
 if [ ! -f "/tz.lock" ]; then
@@ -8,8 +8,8 @@ fi
 
 # 设置PUID PGID
 echo -e "\033[34m设置PUID PGID... \033[0m"
-sh /shell/011-adduser.sh
+bash /shell/011-adduser.sh
 
 # 启动
 echo -e "\033[34m启动 \033[0m"
-sh /shell/040-start.sh
+bash /shell/040-start.sh
