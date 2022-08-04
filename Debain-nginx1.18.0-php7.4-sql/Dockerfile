@@ -3,6 +3,8 @@ FROM ddsderek/foundations:Debian
 ENV PUID=1000
 ENV PGID=1000
 
+ADD ./shell /shell
+
 RUN  apt update -y && \
      apt install -y --no-install-recommends --no-install-suggests nginx supervisor wget \
      php7.4 \
@@ -35,13 +37,13 @@ RUN  apt update -y && \
      echo "<?php phpinfo(); ?>"  > /var/www/html/index.php && \
      apt remove -y wget && \
      apt clean && \
-     rm -rf /var/lib/apt/lists/*   /var/cache/apt
+     rm -rf /var/lib/apt/lists/*   /var/cache/apt && \
+     chmod -R 755 /shell
 
 ADD ./conf/default /etc/nginx/sites-enabled/default
 ADD ./conf/nginx.conf /etc/nginx/nginx.conf
 ADD ./conf/size.ini /etc/php/7.4/fpm/conf.d/size.ini
 ADD ./conf/supervisord.conf /etc/supervisord.conf
-ADD ./shell /shell
 
 EXPOSE 80/tcp
 
