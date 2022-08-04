@@ -112,6 +112,10 @@ RUN wget -c -O composer https://getcomposer.org/download/${COMPOSER_VERSION}/com
 
 
 FROM ddsderek/foundations:Ubuntu18.04
+
+ENV PUID=1000
+ENV PGID=1000
+
 COPY --from=build-env /usr/local/nginx /usr/local/nginx
 COPY --from=build-env /usr/local/php /usr/local/php
 COPY --from=build-env /usr/local/src/composer /usr/local/bin/composer

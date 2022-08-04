@@ -126,6 +126,10 @@ RUN rm -rf /usr/local/php/include
 
 
 FROM ddsderek/foundations:Ubuntu20.04
+
+ENV PUID=1000
+ENV PGID=1000
+
 COPY --from=build-env /usr/local/nginx /usr/local/nginx
 COPY --from=build-env /usr/local/php /usr/local/php
 
