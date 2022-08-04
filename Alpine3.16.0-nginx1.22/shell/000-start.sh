@@ -7,4 +7,5 @@ if [ ! -f "/tz.lock" ]; then
 fi
 
 # 启动nginx
+echo -e "\033[34mNginx启动 \033[0m"
 nginx -g "daemon off;"
