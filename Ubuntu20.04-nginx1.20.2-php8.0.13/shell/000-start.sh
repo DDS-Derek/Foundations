@@ -10,8 +10,6 @@ fi
 echo -e "\033[34m设置PUID PGID... \033[0m"
 sh /shell/011-adduser.sh
 
-/usr/local/php/sbin/php-fpm
-
-/usr/local/nginx/sbin/nginx
-
-tail -f /var/log/nginx/error.log;
+# 启动
+echo -e "\033[34m启动 \033[0m"
+sh /shell/040-start.sh.sh
