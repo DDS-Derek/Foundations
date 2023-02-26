@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/local/php/sbin/php-fpm
+/usr/local/php/sbin/php-fpm -R
 
 /usr/local/nginx/sbin/nginx
 

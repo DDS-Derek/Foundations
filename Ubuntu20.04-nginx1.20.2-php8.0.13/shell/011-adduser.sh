@@ -1,4 +1,4 @@
 #!/bin/sh
 
-groupmod -o -g "$PGID" www-data
-usermod -o -u "$PUID" www-data
+groupmod -o -g "$PGID" www
+usermod -o -u "$PUID" www
