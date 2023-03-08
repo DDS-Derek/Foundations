@@ -4,4 +4,4 @@
 
 /usr/local/nginx/sbin/nginx
 
-tail -f /var/log/nginx/error.log;
+exec tail -f /var/log/nginx/error.log;
