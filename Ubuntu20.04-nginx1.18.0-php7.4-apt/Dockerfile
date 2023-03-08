@@ -1,9 +1,7 @@
 FROM ddsderek/foundations:Ubuntu20.04
 
-ENV PUID=1000
-ENV PGID=1000
-
-ADD ./shell /shell
+ENV PUID=1000 \
+    PGID=1000
 
 RUN  apt update -y &&\
      apt-get install -y software-properties-common && \
@@ -23,14 +21,9 @@ RUN  apt update -y &&\
      ln -sf /dev/stderr /var/log/nginx/error.log   && \
      echo "<?php phpinfo(); ?>"  > /var/www/html/index.php && \
      rm -rf /var/lib/apt/lists/*   /var/cache/apt && \
-     useradd -m -s /sbin/nologin www && \
-     chmod -R 755 /shell
+     useradd -m -s /sbin/nologin www
 
-ADD ./conf/default /etc/nginx/sites-enabled/default
-ADD ./conf/nginx.conf /etc/nginx/nginx.conf
-ADD ./conf/size.ini /etc/php/7.4/fpm/conf.d/size.ini
-ADD ./conf/supervisord.conf /etc/supervisord.conf
-ADD ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY --chmod=755 ./rootfs /
 
 EXPOSE 80/tcp
 
