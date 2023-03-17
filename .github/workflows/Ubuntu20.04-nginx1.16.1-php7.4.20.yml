@@ -28,7 +28,7 @@ jobs:
 
       - 
         name: Buildx
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: Ubuntu20.04-nginx1.16.1-php7.4.20
           file: Ubuntu20.04-nginx1.16.1-php7.4.20/Dockerfile
