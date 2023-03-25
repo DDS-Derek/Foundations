@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+# shellcheck shell=bash
+
+function 090_fixuser {
+groupmod -o -g "${PGID}" nginx
+usermod -o -u "${PUID}" nginx
+
+# app
+chown nginx:nginx -R /web
+
+# Nginx
+chown nginx:nginx -R /var/lib/nginx /run/nginx /var/log/nginx
+}
+
+090_fixuser 2>&1 | sed "s#^#cont-init: info: $(realpath $0): \1#g"
