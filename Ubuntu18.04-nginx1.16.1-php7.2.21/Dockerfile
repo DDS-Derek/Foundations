@@ -1,4 +1,4 @@
-FROM ubuntu:18.04 AS build-env
+FROM ubuntu:22.04 AS build-env
 
 ENV NGINX_VERSION 1.16.1
 ENV PHP_VERSION 7.2.21

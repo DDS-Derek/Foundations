@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS build-env
+FROM ubuntu:22.04 AS build-env
 
 #http://nginx.org/en/download.html
 ENV NGINX_VERSION 1.20.2
