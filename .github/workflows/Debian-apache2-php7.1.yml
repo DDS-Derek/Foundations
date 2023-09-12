@@ -28,7 +28,7 @@ jobs:
 
       - 
         name: Buildx
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: Debian-apache2-php7.1
           file: Debian-apache2-php7.1/Dockerfile
