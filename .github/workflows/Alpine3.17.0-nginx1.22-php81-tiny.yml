@@ -28,7 +28,7 @@ jobs:
 
       - 
         name: Buildx
-        uses: docker/build-push-action@v4
+        uses: docker/build-push-action@v5
         with:
           context: Alpine3.17.0-nginx1.22-php81-tiny
           file: Alpine3.17.0-nginx1.22-php81-tiny/Dockerfile
