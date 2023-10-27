@@ -14,7 +14,7 @@ services:
       - ./apache2.conf:/etc/apache2/apache2.conf
   db:
     container_name: yourwebdbname #记得改
-    image: mysql:5.7
+    image: mysql:8.2
     restart: always
     environment:
       MYSQL_DATABASE: name #记得改
