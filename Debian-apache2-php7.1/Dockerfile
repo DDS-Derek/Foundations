@@ -1,4 +1,4 @@
-FROM php:7.1-apache
+FROM php:8.3-apache
 
 RUN apt-get update && \
     # bcmath, calendar, exif, gettext, sockets, dba, mysqli, pcntl, pdo_mysql, shmop, sysvmsg, sysvsem, sysvshm 安装
